@@ -11,11 +11,14 @@ class Pantalla {
     nave=new Nave();
     nave.setPosicion(new PVector(width/2, height-100));
     nave.setVelocidad(new PVector(300*Time.getDeltaTime(frameRate), 300*Time.getDeltaTime(frameRate)));
-  }
+ gestorAst=new GestorAsteroide();
+    gestorAst.crearAsteroide();
+}
   void display() {
     kitty.display();
     nave.display();
     nave.mover();
+    gestorAst.display();
   }
 
   void setKitty(Kitty kitty) {
