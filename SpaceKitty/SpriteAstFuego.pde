@@ -1,4 +1,4 @@
-class SpriteNave {
+class SpriteAstFuego {
   private PImage sprite;
   private int widthFrame;//ancho del cuadro
   private int heightFrame;//alto del cuadro
@@ -8,16 +8,17 @@ class SpriteNave {
   private int contFrames;//contador de cuadros de imagen
   private PVector posicion;
   private PVector velocidad;
-private int tiempoSprite;
+  private String nombre;
+  private int tiempoSprite;
 
-  SpriteNave() {
 
-    sprite =requestImage("nave.png");
-    widthFrame=6768/12;
-    heightFrame =442;
+  SpriteAstFuego() {
+    sprite =requestImage("rojo.png");
+    widthFrame=8000/16;
+    heightFrame =500;
     xFrame=0;
     yFrame=0;
-    cantFrames=12;
+    cantFrames=16;
     contFrames=1;
     tiempoSprite = 2 * millis() / 1000; // Establecer el tiempo inicial de referencia
   }
@@ -26,12 +27,13 @@ private int tiempoSprite;
   void display() {
     imageMode(CENTER);
     if (contFrames <= cantFrames) {
-      image(sprite.get(xFrame, yFrame, widthFrame, heightFrame), posicion.x, posicion.y, 100, 100);
-     if (millis() - tiempoSprite >= 200) { // Verificar si ha pasado suficiente tiempo para cambiar de frame
+      image(sprite.get(xFrame, yFrame, widthFrame, heightFrame), posicion.x, posicion.y, 40, 40);
+      if (millis() - tiempoSprite >= 50) { // Verificar si ha pasado suficiente tiempo para cambiar de frame
         xFrame = xFrame + widthFrame; // Avanzar a la siguiente posición x del frame
         contFrames++; // Incrementar el contador de frames
         tiempoSprite = millis(); // Actualizar el tiempo de referencia
       }
+
       if (xFrame >= sprite.width) {
         xFrame=0;
         contFrames=1;
@@ -87,5 +89,11 @@ private int tiempoSprite;
   }
   PVector getVelocidad() {
     return this.velocidad;
+  }
+  void setNombre(String nombre) {
+    this.nombre=nombre;
+  }
+  String getNombre() {
+    return this.nombre;
   }
 }
