@@ -1,20 +1,19 @@
-class Asteroide extends GameObject implements IMoveable{
-private PImage imagen;
+class Asteroide extends GameObject implements IMoveable {
+  private PImage imagen;
 
-Asteroide(){
-}
+  Asteroide() {
+  }
 
-void display (){
-}
-void mover(){
-}
+  void display () {
+  }
+  void mover() {
+  }
 
-void setImagen(PImage imagen){
-  this.imagen=imagen;
-}
+  void setImagen(PImage imagen) {
+    this.imagen=imagen;
+  }
 
-PImage getImagen(){
-  return this.imagen;
-}
-
+  PImage getImagen() {
+    return this.imagen;
+  }
 }
