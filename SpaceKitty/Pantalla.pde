@@ -2,9 +2,7 @@ class Pantalla {
   private Kitty kitty;
   private Nave nave;
   private GestorAsteroide gestorAst;
-private Escenario escenario;
-  private Derrota derrota;
-  private Victoria victoria;
+
   
   Pantalla() {
     kitty=new Kitty();
@@ -50,19 +48,6 @@ private Escenario escenario;
   GestorAsteroide getGestorAsteroide() {
     return this.gestorAst;
   }
-  void setDerrota(Derrota derrota){
-  this.derrota=derrota;
-  }
-  
-  Derrota getDerrota(){
-  return this.derrota;
-  }
- 
-  void setVictoria(Victoria victoria){
-    this.victoria=victoria;
-  }
-  
-  Victoria getVictoria(){
-    return this.victoria;
-  }
 }
+  
+  
