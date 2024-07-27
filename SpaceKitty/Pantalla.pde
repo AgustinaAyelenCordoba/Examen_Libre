@@ -22,6 +22,7 @@ class Pantalla {
     kitty.display();
     nave.display();
     nave.mover();
+    nave.colicionNave(kitty);
     gestorAst.display();
     gestorAst.colicionar(kitty);
   }

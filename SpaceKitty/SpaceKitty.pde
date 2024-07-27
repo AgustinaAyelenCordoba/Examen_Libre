@@ -18,7 +18,7 @@ private Gif gif;
 private PImage logo;
 private int velocidadLogo;
 private int presentacion;
-
+private int seleccion;
 void setup() {
   size(800, 700);
   pantalla=new Pantalla();
@@ -37,6 +37,7 @@ void setup() {
   logo = loadImage("logo.png");
   presentacion=0;
   velocidadLogo=int(300*Time.getDeltaTime(frameRate));
+ seleccion=0; 
 }
 
 void draw() {
@@ -54,11 +55,12 @@ void draw() {
     }
     break;
   case MaquinaEstados.MENU:
+    menu.mostrar();
     audioMenu.play();
     if (audioMenu.position()>=audioMenu.length()) {
       audioMenu.rewind();
     }
-    menu.mostrar();
+    selector("EMPEZAR");
     println("estado menu");
     if (key==' ') {
       estado=MaquinaEstados.JUGANDO;
@@ -82,11 +84,14 @@ void draw() {
     if (joypad.getFreeFall()) {
       pantalla.getKitty().mover("freeFall");
     }
+    if (pantalla.getNave().colicionNave()) {
+      estado=MaquinaEstados.VICTORIA;
+      audioJuego.pause();
+    }
+    
+    
     if (key =='u') {
       estado=MaquinaEstados.DERROTA;
-      audioDerrota.rewind();
-      audioDerrota.play();
-      audioJuego.rewind();
       audioJuego.pause();
       println("se apreto u ");
     }
@@ -99,6 +104,7 @@ void draw() {
   case MaquinaEstados.DERROTA:
     audioDerrota.play();
     derrota.mostrar();
+    selector("REINTETAR");
     if (key=='o') {
       estado=MaquinaEstados.JUGANDO;
       audioJuego.play();
@@ -108,8 +114,25 @@ void draw() {
   case MaquinaEstados.VICTORIA:
     audioVictoria.play();
     victoria.mostrar();
-
+    selector("JUGAR");
     break;
+  }
+}
+void selector(String nombre) {//agregar explicar
+  textSize(40);
+  if (seleccion==0) {
+    fill(255);
+    text(nombre, width-550, height-50);// agregar
+  } else {
+    fill(0);
+    text(nombre, width-550, height-50);
+  }
+  if (seleccion==1) {
+    fill(255);
+    text("SALIR", width-300, height-50);
+  } else {
+    fill(0);
+    text("SALIR", width-300, height-50);
   }
 }
 void keyReleased() {
@@ -119,6 +142,21 @@ void keyReleased() {
   if (key=='d') {
     joypad.setRighPressed(false);
   }
+  if (key==CODED) {
+    if (keyCode==LEFT) {
+      seleccion=(seleccion-1+2)%2;
+    } else if (keyCode==RIGHT) {
+      seleccion=(seleccion+1)%2;
+    }
+  }
+  if (keyCode == ENTER) {
+    if (seleccion==0) {
+      estado=MaquinaEstados.JUGANDO;
+    } else if (seleccion==1) {
+      exit();
+    }
+  }
+   
 }
 void keyPressed() {
   if (key=='a') {
