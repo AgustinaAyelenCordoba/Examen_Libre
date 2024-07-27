@@ -1,17 +1,24 @@
 Pantalla pantalla;
 Joypad joypad;
 int estado;
+Derrota derrota;
+Victoria victoria;
+Menu menu;
 void setup() {
   size(800, 700);
   pantalla=new Pantalla();
   joypad=new Joypad();
   estado=MaquinaEstados.MENU;
+  derrota=new Derrota();
+  victoria=new Victoria();
+  menu = new Menu();
 }
 
 void draw() {
   switch(estado) {
   case MaquinaEstados.MENU:
     background(0);
+    menu.mostrar();
     println("estado menu");
     if (key==' ') {
       estado=MaquinaEstados.JUGANDO;
@@ -30,12 +37,25 @@ void draw() {
     if (joypad.getFreeFall()) {
       pantalla.getKitty().mover("freeFall");
     }
+    if (key =='u') {
+      estado=MaquinaEstados.DERROTA;
+      println("se apreto u ");
+    }
+    if (key =='y') {
+      estado=MaquinaEstados.VICTORIA;
+      println("se apreto y ");
+    }
     break;
   case MaquinaEstados.DERROTA:
-
+    derrota.mostrar();
+    if (key=='o') {
+      estado=MaquinaEstados.JUGANDO;
+     println("se apreto o "); 
+    }
     break;
   case MaquinaEstados.VICTORIA:
-
+    victoria.mostrar();
+    
     break;
   }
 }

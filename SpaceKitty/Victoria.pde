@@ -1,10 +1,11 @@
-class Victoria{
+class Victoria {
+  private PImage imagen;
 
-  
-  Victoria(){
+  Victoria() {
+    imagen=loadImage("victoria.png");
   }
-  
-  void display(){
-  
+
+  void mostrar() {
+    image(imagen, width/2, height/2, width, height);
   }
 }
