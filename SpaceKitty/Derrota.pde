@@ -1,9 +1,11 @@
-class Derrota{
+class Derrota {
+  private PImage imagen;
 
-  
-  Derrota(){
-  
+  Derrota() {
+    imagen=loadImage("derrota.png");
   }
-  
-  void display(){}
+
+  void mostrar() {
+    image(imagen, width/2, height/2, width, height);
+  }
 }
