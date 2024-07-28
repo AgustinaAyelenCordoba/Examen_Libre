@@ -6,17 +6,15 @@ class Pantalla {
   
   Pantalla() {
     kitty=new Kitty();
-    kitty.setPosicion(new PVector(width/2, height-650));
-    kitty.setVelocidad(new PVector(100*Time.getDeltaTime(frameRate), 300*Time.getDeltaTime(frameRate)));
+    kitty.setPosicion(new PVector(width/2, height-660));
+    kitty.setVelocidad(new PVector(250*Time.getDeltaTime(frameRate), 300*Time.getDeltaTime(frameRate)));
     kitty.setVidas(6);
     nave=new Nave();
     nave.setPosicion(new PVector(width/2, height-100));
-    nave.setVelocidad(new PVector(300*Time.getDeltaTime(frameRate), 300*Time.getDeltaTime(frameRate)));
+    nave.setVelocidad(new PVector(350*Time.getDeltaTime(frameRate), 350*Time.getDeltaTime(frameRate)));
  gestorAst=new GestorAsteroide();
     gestorAst.crearAsteroide();
-    victoria=new Victoria();
-    derrota=new Derrota();
-    escenario=new Escenario();
+    
 }
   void display() {
     kitty.display();

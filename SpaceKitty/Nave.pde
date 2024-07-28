@@ -20,9 +20,8 @@ private float distancia;
   
  void colicionNave(Kitty kitty) {
     distancia=dist(kitty.getPosicion().x, kitty.getPosicion().y, this.posicion.x, this.posicion.y);
-    line(kitty.getPosicion().x, kitty.getPosicion().y, this.posicion.x, this.posicion.y);
-    if (distancia<75) {
-      println("xddd si ubo colicion");
+     if (distancia<75) {
+      println("si hubo colicion");
       colicionNave=true;
     } else {
       colicionNave=false;
