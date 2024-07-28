@@ -8,8 +8,7 @@ void display() {
     spriteAstFuego.display();
   }
   
-  void quemar() {
-  }
+  
   void mover() {
     posicion.x+=velocidad.x;
     if (posicion.x>width-15||posicion.x<15) {

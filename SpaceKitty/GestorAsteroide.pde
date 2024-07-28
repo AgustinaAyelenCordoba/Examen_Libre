@@ -2,7 +2,8 @@ class GestorAsteroide {
   private  AsteroideFuego[] astFuego;
   private AsteroideHielo[] astHielo;
   private float distancia;
-
+private boolean colisionFuego;
+  private boolean colisionHielo;
   GestorAsteroide() {
     astFuego=new AsteroideFuego[2];
     astHielo=new AsteroideHielo[2];
@@ -27,6 +28,8 @@ class GestorAsteroide {
     astHielo[0].setVelocidad(new PVector(-100*Time.getDeltaTime(frameRate), 100*Time.getDeltaTime(frameRate)));
     astHielo[1].setVelocidad(new PVector(100*Time.getDeltaTime(frameRate), 100*Time.getDeltaTime(frameRate)));
   }
+  
+  
 
   void display() {
     for (int i=0; i<astFuego.length; i++) {
@@ -44,15 +47,28 @@ class GestorAsteroide {
       distancia=dist(kitty.getPosicion().x, kitty.getPosicion().y, astFuego[i].getPosicion().x, astFuego[i].getPosicion().y);
       //line(kitty.getPosicion().x, kitty.getPosicion().y, astFuego[i].getPosicion().x, astFuego[i].getPosicion().y);
       if (distancia<45) {
+        colisionFuego = true;
         println("hubo colicion fuego");
+      }else{
+      colisionFuego = false;
       }
       for (int j =0; j<astHielo.length; j++) {
         distancia=dist(kitty.getPosicion().x, kitty.getPosicion().y, astHielo[j].getPosicion().x, astHielo[j].getPosicion().y);
         // line(kitty.getPosicion().x, kitty.getPosicion().y, astHielo[j].getPosicion().x, astHielo[j].getPosicion().y);
         if (distancia<45) {
+          colisionHielo = true;
           println("hubo colicion hielo");
+        }else{
+          colisionHielo = false;
         }
       }
     }
+  }
+  boolean huboColisionFuego(){
+    return colisionFuego;
+  }
+
+  boolean huboColisionHielo() {
+    return colisionHielo;
   }
 }

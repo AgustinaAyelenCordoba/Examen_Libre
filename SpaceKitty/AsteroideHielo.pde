@@ -4,8 +4,7 @@ private SpriteAstHielo spriteAstHielo;
     spriteAstHielo=new SpriteAstHielo();
   }
 
-  void congelar() {
-  }
+  
   void display() {
     spriteAstHielo.setPosicion(new PVector(this.posicion.x, this.posicion.y));
     spriteAstHielo.display();
